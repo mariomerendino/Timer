@@ -268,7 +268,7 @@ public class MainActivity extends AppCompatActivity {
 
         MinuteEditText.setText("0");
         SecondEditText.setText("0");
-        
+
         Status.setText("Waiting");
         Status.setTextColor(Color.argb(255, 255, 0, 0));
         Status.setBackgroundColor(Color.argb(0, 0, 0, 0));

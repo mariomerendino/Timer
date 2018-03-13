@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="How much time do you have?"
+        android:text="Time: "
         android:layout_gravity="center_horizontal"
         android:layout_columnSpan="4"/>
     <TextView
@@ -66,7 +66,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="\nHow long is the Task?\n"
+        android:textStyle="bold"
+        android:text="\nSet Timer:\n"
         android:layout_gravity="center_horizontal"
         android:layout_columnSpan="4"/>
     <TextView
