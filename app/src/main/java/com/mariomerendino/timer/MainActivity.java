@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
         Status = (TextView) findViewById(R.id.status);
         VolumeTextView = (TextView)findViewById(R.id.volumeTextView);
 
-
         //Link EditTexts
         SecondEditText = (EditText) findViewById(R.id.secondsEdit);
         MinuteEditText = (EditText) findViewById(R.id.minutesEdit);
@@ -90,16 +89,16 @@ public class MainActivity extends AppCompatActivity {
     }
     private final OnSeekBarChangeListener seekBarListener =
             new OnSeekBarChangeListener() {
+                //Anytime the user trys to change the seekbars, it doesnt allow it
+                //this is because the seekbars are supposed to change automatically
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress,
                                               boolean fromUser) {
-
                     if(seekBar.getId() == (R.id.SecondSeekBar) ){
                         SecSeekBar.setProgress(seekBarSec);
                     }
                     if(seekBar.getId() == (R.id.MinuteSeekBar) ) {
                         MinSeekBar.setProgress(seekBarMin);
-
                     }
                     if(seekBar.getId() == (R.id.percentBar) ) {
                         PSeekBar.setProgress((int) PSeekbarVal);
@@ -108,17 +107,19 @@ public class MainActivity extends AppCompatActivity {
                         VSeekBar.setProgress((int) (volume*100));
                     }
                 }
-
                 @Override
                 public void onStartTrackingTouch(SeekBar seekBar) { }
-
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) { }
             };
 
-    //Run after enter hit
+    //Run after enter hit on second key
     public void calculate(){
+        //caluclate total time input in milliseconds
         int totalmili = ((inputMin * 60 ) + inputSec) * 1000;
+        //Start countdown,
+        //from 0-totalmili
+        //Each interval is 1000 miliseconds = 1second
         new CountDownTimer(totalmili+2000, 1000){
             double totalSeek;
             int color =  0;
@@ -196,8 +197,11 @@ public class MainActivity extends AppCompatActivity {
                 Status.setText("Finished\nClick Me to Restart");
             }
         }.start();
+        //start timer
     }
 
+    //Edit Text watcher,
+    //watches user input
     private final TextWatcher editTextWatch = new TextWatcher() {
 
         @Override
@@ -250,8 +254,6 @@ public class MainActivity extends AppCompatActivity {
 
     //RESET FUNCTION
     public void reset(View v){
-        secEnter = false;
-
         //Reset vars
         songTimeSec = 23;
         PSeekbarVal = 0;
@@ -260,6 +262,7 @@ public class MainActivity extends AppCompatActivity {
         inputMin = 0;
         inputSec = 0;
         volume = 0.1;
+        secEnter = false;
 
         //Reset text Views & Edit
         MinuteTextView.setText("0");
